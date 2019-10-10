@@ -3,7 +3,7 @@ package lexer
 import (
 	"fmt"
 
-	"github.com/kEDIT/stl/symbol"
+	"github.com/kEDIT/stl/lexer/symbol"
 )
 
 type tokenType int
