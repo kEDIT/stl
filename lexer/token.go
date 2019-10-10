@@ -29,6 +29,7 @@ func (t tokenType) String() string {
 
 // Token interface describes behavior of a token emmitted by a lexer
 type Token interface {
+	fmt.Stringer
 	Type() string
 	Value() string
 }

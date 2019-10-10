@@ -12,7 +12,7 @@ import (
 type asciiLexer struct {
 	rd    *bufio.Reader
 	tbuf  strings.Builder
-	toks  chan token
+	toks  chan Token
 	done  chan struct{}
 	start int
 	pos   int
@@ -23,12 +23,12 @@ func NewAsciiLexer(input io.Reader) *asciiLexer {
 	return &asciiLexer{
 		rd:   bufio.NewReader(input),
 		tbuf: strings.Builder{},
-		toks: make(chan token),
+		toks: make(chan Token),
 		done: make(chan struct{}),
 	}
 }
 
-func (l *asciiLexer) tokens() (chan token, chan struct{}) {
+func (l *asciiLexer) tokens() (chan Token, chan struct{}) {
 	return l.toks, l.done
 }
 
@@ -85,7 +85,7 @@ func (l *asciiLexer) scan() {
 	return
 }
 
-func (l *asciiLexer) Lex() (chan token, chan struct{}) {
+func (l *asciiLexer) Lex() (chan Token, chan struct{}) {
 	go l.scan()
 	return l.toks, l.done
 }
