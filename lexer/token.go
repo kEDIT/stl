@@ -27,6 +27,7 @@ func (t tokenType) String() string {
 	return tokenTypeStringer[t]
 }
 
+// Token interface describes behavior of a token emmitted by a lexer
 type Token interface {
 	Type() string
 	Value() string
@@ -38,10 +39,12 @@ type token struct {
 	pos int
 }
 
+// Type returns the token type as a string
 func (t token) Type() string {
 	return t.typ.String()
 }
 
+// Value return the token value as a string
 func (t token) Value() string {
 	return t.val
 }
